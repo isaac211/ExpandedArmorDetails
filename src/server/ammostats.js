@@ -6,6 +6,7 @@
  */
 
 "use strict";
+const path = require('path');
 
 class AmmoStats {
     constructor() {
@@ -17,7 +18,7 @@ class AmmoStats {
     }
 
     init(){
-        this.wrapGetImage();
+        this.hookRoutes();
         this.updateLocalization();
     }
 
@@ -36,27 +37,27 @@ class AmmoStats {
         }
     }
 
-    wrapGetImage(){
-        this.defaultImageResponse = HttpServer.onRespond["IMAGE"];
-        HttpServer.onRespond["IMAGE"] = this.getImage.bind(this);
+    hookRoutes(){
+        HttpRouter.onStaticRoute["/MunitionsExpert/GetInfo"] = {
+            MunitionsExpert: this.getModInfo.bind(this)
+        };
     }
 
-    getImage(sessionID, req, resp, body)
-    {
-        const path = `${ModLoader.getModPath(this.mod.name)}res/`;
+    getModInfo(url, info, sessionID, output){
+        var output = {
+            status: 1,
+            data: null
+        };
 
-        if (req.url.includes("/files/armorDamage"))
-        {
-            HttpServer.sendFile(resp, `${path}armorDamage.png`);
-            return;
+        // Don't mind this pointless try catch
+        try{
+            output.data = {...this.mod, ...{path: path.resolve(ModLoader.getModPath(this.mod.name))}};
+            output.status = 0;
+        }catch(ex){
+            throw ex;
         }
-        else if (req.url.includes("/files/ricochet"))
-        {
-            HttpServer.sendFile(resp, `${path}ricochet.png`);
-            return;
-        }
-
-        this.defaultImageResponse(sessionID, req, resp, body);
+        
+        return JsonUtil.serialize(output);
     }
 }
 

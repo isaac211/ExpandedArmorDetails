@@ -37,58 +37,11 @@
     <AssemblyOriginatorKeyFile>MunitionsExpert.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="aki-common">
-      <HintPath>C:\SPTarkov\Aki_Data\Modules\aki-common\aki-common.dll</HintPath>
-    </Reference>
-    <Reference Include="aki-core">
-      <HintPath>C:\SPTarkov\Aki_Data\Modules\aki-core\aki-core.dll</HintPath>
-    </Reference>
-    <Reference Include="aki-singleplayer">
-      <HintPath>C:\SPTarkov\Aki_Data\Modules\aki-singleplayer\aki-singleplayer.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Comfort, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\SPTarkov\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="src\client\Attributes.cs" />
+    <Compile Include="src\client\ModInformation.cs" />
     <Compile Include="src\client\MunitionsExpert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\client\Patches.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image sources\ammo stats.png" />
@@ -104,10 +57,64 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image sources\ammo stats.pdn" />
+    <None Include="LICENSE" />
     <None Include="MunitionsExpert.pfx" />
     <None Include="_Build\Faupi-MunitionsExpert\LICENSE" />
     <None Include="package.json" />
     <None Include="res\translations.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Aki-Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\Aki_Data\Modules\aki-core\Aki-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Aki-Singleplayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\Aki_Data\Modules\aki-singleplayer\Aki-Singleplayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Aki.Build">
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Aki.Build.dll</HintPath>
+    </Reference>
+    <Reference Include="Aki.Common">
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Aki.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Aki.Reflection">
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Aki.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Comfort, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPTarkov\AKI-2.0.0\EscapeFromTarkov_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
