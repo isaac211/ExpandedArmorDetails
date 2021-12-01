@@ -8,14 +8,14 @@ using EFT.InventoryLogic;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
 
-using ItemAttribute = GClass1796;
-using ItemAttributeCharacteristic = GClass1798;
+using ItemAttribute = GClass2023;
+using ItemAttributeCharacteristic = GClass2025;
 using Logger = Aki.Common.Log;
 using Comfort.Common;
 using System.Reflection;
 using MunitionsExpert;
 using static MunitionsExpert.Attributes;
-using ServerSettings = GClass862;
+using ServerSettings = GClass1064;
 using MunitionsExpert.Patches;
 using System.IO;
 
@@ -173,7 +173,7 @@ namespace MunitionsExpert
                     int ratedClass = 0;
 
                     if (!Singleton<ServerSettings>.Instantiated) { return $"CLASS_DATA_MISSING {template.PenetrationPower.ToString()}"; }
-                    ServerSettings.GClass878.GClass879[] classes = Singleton<ServerSettings>.Instance.Armor.ArmorClass;
+                    ServerSettings.GClass1109.GClass1110[] classes = Singleton<ServerSettings>.Instance.Armor.ArmorClass;
                     for (int i = 0; i < classes.Length; i++)
                     {
                         if (classes[i].Resistance > template.PenetrationPower) continue;
