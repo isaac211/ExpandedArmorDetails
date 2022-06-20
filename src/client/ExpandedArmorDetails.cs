@@ -50,13 +50,8 @@ namespace ExpandedArmorDetails
 
         public static void CacheIcons()
         {
-            iconCache.Add(ENewItemAttributeId.Damage, Resources.Load<Sprite>("characteristics/icons/icon_info_damage"));
-            iconCache.Add(ENewItemAttributeId.FragmentationChance, Resources.Load<Sprite>("characteristics/icons/icon_info_shrapnelcount"));
-            iconCache.Add(EItemAttributeId.LightBleedingDelta, Resources.Load<Sprite>("characteristics/icons/icon_info_bloodloss"));
-            iconCache.Add(EItemAttributeId.HeavyBleedingDelta, Resources.Load<Sprite>("characteristics/icon_info_hydration"));
-            iconCache.Add(ENewItemAttributeId.Penetration, Resources.Load<Sprite>("characteristics/icon_info_penetration"));
-            _ = LoadTexture(ENewItemAttributeId.ArmorDamage, Path.Combine(ModInfo.path, "res/armorDamage.png"));
-            _ = LoadTexture(ENewItemAttributeId.RicochetChance, Path.Combine(ModInfo.path, "res/ricochet.png"));
+            _ = LoadTexture(ENewItemAttributeId.DurabilityFactor, Path.Combine(ModInfo.path, "res/armorDamage.png"));
+            _ = LoadTexture(ENewItemAttributeId.EffectiveDurability, Path.Combine(ModInfo.path, "res/ricochet.png"));
         }
 
         public static async Task LoadTexture(Enum id, string path)
@@ -81,141 +76,40 @@ namespace ExpandedArmorDetails
                 }
             }
         }
-
-        public static string RemoveSpaceBetweenValueAndPercent(string str)
+        static public void AddNewAttributes(ref List<ItemAttribute> attributes, ArmorTemplate template)
         {
-            return Regex.Replace(str, "(?<=[0-9]+)\\ (?=%)", string.Empty);
-        }
 
-        public static void FormatExistingAttributes(ref List<ItemAttribute> attributes, AmmoTemplate template)
-        {
-            if (attributes == null || template == null) return;
-
-            for (int i = 0; i < attributes.Count; i++)
+            if (template.DurabilityFactor > 0)
             {
-                ItemAttribute attr = attributes[i];
-                if (attr == null) continue;
+                ItemAttribute at_durabilityfact = new ItemAttribute(ENewItemAttributeId.DurabilityFactor)
+                {
+                    Name = ENewItemAttributeId.DurabilityFactor.GetName(),
+                    Base = () => template.DurabilityFactor,
+                    StringValue = () => $"{(( template.DurabilityFactor+1) * 100).ToString()}%",
+                    DisplayType = () => EItemAttributeDisplayType.Compact
+                };
 
-                if ((EItemAttributeId)attr.Id == EItemAttributeId.CenterOfImpact)
+
+                ItemAttribute at_durabilityeff = new ItemAttribute(ENewItemAttributeId.EffectiveDurability)
                 {
-                    float num = template.ammoAccr;
-                    (attr as ItemAttributeCharacteristic).LessIsGood = false; // More accuracy = better
-                    attr.LabelVariations = EItemAttributeLabelVariations.Colored; // Red if bad, green if good
-                    attr.StringValue = () => $"{num}%"; // Pointless but at least it'll be consistent lol
-                }
-                else if ((EItemAttributeId)attr.Id == EItemAttributeId.Recoil)
-                {
-                    float num = template.ammoRec;
-                    (attr as ItemAttributeCharacteristic).LessIsGood = true; //Less recoil = better
-                    attr.LabelVariations = EItemAttributeLabelVariations.Colored; //Red if bad, green if good
-                    attr.StringValue = () => $"{num}%"; // Missing percent sign
-                }
-                else if ((EItemAttributeId)attr.Id == EItemAttributeId.DurabilityBurn)
-                {
-                    float num = (template.DurabilityBurnModificator - 1f) * 100f;
-                    if(attr as ItemAttributeCharacteristic == null)
+                    Name = ENewItemAttributeId.EffectiveDurability.GetName(),
+                    Base = () => template.DurabilityFactor,
+                    StringValue = () =>
                     {
-                        ItemAttributeCharacteristic attrChar = new ItemAttributeCharacteristic((EItemAttributeId)attr.Id);
-                        attrChar.CopyFrom(attr);
-                        attr = attrChar;
-                    }
+                        if (template.TotalArmorHealthPoints > 0)
+                        {
+                            return $"{(int)(template.TotalArmorHealthPoints / template.DurabilityFactor)}";
+                        }
 
-                    (attr as ItemAttributeCharacteristic).LessIsGood = true; //Less burn = better
-
-                    attr.Base = () => (template.DurabilityBurnModificator - 1f);
-                    attr.LabelVariations = EItemAttributeLabelVariations.Colored; //Red if bad, green if good
-                    attr.StringValue = () => $"{num}%"; // Missing percent sign
-                }
-
-                string str = RemoveSpaceBetweenValueAndPercent(attr.StringValue());
-                attr.StringValue = () => str;
-
-                attributes[i] = attr;
-            }
-        }
-
-        static public void AddNewAttributes(ref List<ItemAttribute> attributes, AmmoTemplate template)
-        {
-            int projCount = template.ProjectileCount;
-            int totalDamage = template.Damage * template.ProjectileCount;
-
-            string damageStr = totalDamage.ToString(); // Total damage
-            if (template.ProjectileCount > 1)
-            {
-                damageStr += $" ({template.Damage} x {template.ProjectileCount})";  // Add the "damage calculation" after total damage (damage per pellet * pellet count)
-            }
-
-            ItemAttribute at_damage = new ItemAttribute(ENewItemAttributeId.Damage)
-            {
-                Name = ENewItemAttributeId.Damage.GetName(),
-                Base = () => totalDamage,
-                StringValue = () => damageStr,
-                DisplayType = () => EItemAttributeDisplayType.Compact
-            };
-            attributes.Add(at_damage);
-
-            if (template.ArmorDamage > 0)
-            {
-                ItemAttribute at_armordmg = new ItemAttribute(ENewItemAttributeId.ArmorDamage)
-                {
-                    Name = ENewItemAttributeId.ArmorDamage.GetName(),
-                    Base = () => template.ArmorDamage,
-                    StringValue = () => $"{(template.ArmorDamage).ToString()}%",
+                        return 0;
+                    },
                     DisplayType = () => EItemAttributeDisplayType.Compact
                 };
-                attributes.Add(at_armordmg);
+                
+                attributes.Add(at_durabilityfact);
+                attributes.Add(at_durabilityeff);
             }
 
-            if (template.PenetrationPower > 0)
-            {
-                string getStringValue()
-                {
-                    int ratedClass = 0;
-
-                    if (!Singleton<ServerSettings>.Instantiated) { return $"CLASS_DATA_MISSING {template.PenetrationPower.ToString()}"; }
-                    ServerSettings.GClass1109.GClass1110[] classes = Singleton<ServerSettings>.Instance.Armor.ArmorClass;
-                    for (int i = 0; i < classes.Length; i++)
-                    {
-                        if (classes[i].Resistance > template.PenetrationPower) continue;
-                        ratedClass = Math.Max(ratedClass, i);
-                    }
-
-                    return $"{(ratedClass > 0 ? $"{"ME_class".Localized()} {ratedClass}" : "ME_noarmor".Localized())} ({template.PenetrationPower.ToString()})";
-                }
-
-                ItemAttribute at_pen = new ItemAttribute(ENewItemAttributeId.Penetration)
-                {
-                    Name = ENewItemAttributeId.Penetration.GetName(),
-                    Base = () => template.PenetrationPower,
-                    StringValue = getStringValue,
-                    DisplayType = () => EItemAttributeDisplayType.Compact
-                };
-                attributes.Add(at_pen);
-            }
-
-            if (template.FragmentationChance > 0)
-            {
-                ItemAttribute at_frag = new ItemAttribute(ENewItemAttributeId.FragmentationChance)
-                {
-                    Name = ENewItemAttributeId.FragmentationChance.GetName(),
-                    Base = () => template.FragmentationChance,
-                    StringValue = () => $"{(template.FragmentationChance * 100).ToString()}%",
-                    DisplayType = () => EItemAttributeDisplayType.Compact
-                };
-                attributes.Add(at_frag);
-            }
-
-            if (template.RicochetChance > 0)
-            {
-                ItemAttribute at_ricochet = new ItemAttribute(ENewItemAttributeId.RicochetChance)
-                {
-                    Name = ENewItemAttributeId.RicochetChance.GetName(),
-                    Base = () => template.RicochetChance,
-                    StringValue = () => $"{(template.RicochetChance * 100).ToString()}%",
-                    DisplayType = () => EItemAttributeDisplayType.Compact
-                };
-                attributes.Add(at_ricochet);
-            }
         }
     }
 }

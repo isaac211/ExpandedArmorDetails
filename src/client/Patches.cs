@@ -63,15 +63,16 @@ namespace ExpandedArmorDetails.Patches
 
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(AmmoTemplate).GetMethod("GetCachedReadonlyQualities", BindingFlags.Instance | BindingFlags.Public);
+            return typeof(ArmorTemplate).GetMethod("GetCachedReadonlyQualities", BindingFlags.Instance | BindingFlags.Public);
         }
 
-        private static void PatchPostfix(ref AmmoTemplate __instance, ref List<ItemAttribute> __result)
+        private static void PatchPostfix(ref ArmorTemplate __instance, ref List<ItemAttribute> __result)
         {
-            bool converted = __result.Any(a => (ENewItemAttributeId)a.Id == ENewItemAttributeId.Damage); //Damage is pretty much guaranteed
+            // TODO verify if we can only retrieve the material type, then fetch that instead and create a table that matches
+            // known info on wikis for durability factor if it is the cause
+            bool converted = __result.Any(a => (ENewItemAttributeId)a.Id == ENewItemAttributeId.DurabilityFactor); // FIXME Assume durability factor is guaranteed
             if (!converted) //If it has any of the custom attributes, it has all of them (the ones that apply ofc)
             {
-                ExpandedArmorDetails.FormatExistingAttributes(ref __result, __instance);
                 ExpandedArmorDetails.AddNewAttributes(ref __result, __instance);
             }
         }
