@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MunitionsExpert - Ammo stats in inspect view")]
-[assembly: AssemblyDescription("Adds ammo stats to inspect view as well as improving the format a little")]
+[assembly: AssemblyTitle("ExpandedArmorDetails - Additional armor stats in inspect view")]
+[assembly: AssemblyDescription("Adds armor stats to inspect view as well as improving the format a little")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SPT-AKI - MunitionsExpert")]
-[assembly: AssemblyCopyright("Faupi © 2021")]
+[assembly: AssemblyProduct("SPT-AKI - ExpandedArmorDetails")]
+[assembly: AssemblyCopyright("isaac211 © 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

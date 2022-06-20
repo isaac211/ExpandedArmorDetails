@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace MunitionsExpert
+namespace ExpandedArmorDetails
 {
     public class ModInformation
     {
@@ -22,7 +22,7 @@ namespace MunitionsExpert
         {
             ModInformation ModInfo;
 
-            JObject response = JObject.Parse(Aki.SinglePlayer.Utils.RequestHandler.GetJson($"/MunitionsExpert/GetInfo"));
+            JObject response = JObject.Parse(Aki.SinglePlayer.Utils.RequestHandler.GetJson($"/ExpandedArmorDetails/GetInfo"));
             try
             {
                 Assert.IsTrue(response.Value<int>("status") == 0);
@@ -30,7 +30,7 @@ namespace MunitionsExpert
             }
             catch (Exception getModInfoException)
             {
-                string errMsg = $"[{typeof(MunitionsExpert)}] Package.json couldn't be found! Make sure you've installed the mod on the server as well!";
+                string errMsg = $"[{typeof(ExpandedArmorDetails)}] Package.json couldn't be found! Make sure you've installed the mod on the server as well!";
                 Debug.LogError(errMsg);
                 throw getModInfoException;
             }

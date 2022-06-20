@@ -1,14 +1,15 @@
-/* ammostats.js
+/* armordetails.js
  * license: NCSA
- * copyright: Faupi
+ * copyright: isaac211
  * authors:
+ * - isaac211
  * - Faupi
  */
 
 "use strict";
 const path = require('path');
 
-class AmmoStats {
+class ArmorDetails {
     constructor() {
         this.mod = require("../package.json");
         this.translations = require("../res/translations.json");
@@ -38,8 +39,8 @@ class AmmoStats {
     }
 
     hookRoutes(){
-        HttpRouter.onStaticRoute["/MunitionsExpert/GetInfo"] = {
-            MunitionsExpert: this.getModInfo.bind(this)
+        HttpRouter.onStaticRoute["/ExpandedArmorDetails/GetInfo"] = {
+            ExpandedArmorDetails: this.getModInfo.bind(this)
         };
     }
 
@@ -61,4 +62,4 @@ class AmmoStats {
     }
 }
 
-module.exports = new AmmoStats();
+module.exports = new ArmorDetails();

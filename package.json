@@ -1,8 +1,8 @@
 {
-    "name": "Faupi-MunitionsExpert",
-    "author": "Faupi",
-    "version": "1.2.1",
+    "name": "isaac211-ExpandedArmorDetails",
+    "author": "isaac211",
+    "version": "0.0.1",
     "license": "NCSA Open Source",
-    "main": "./src/ammostats.js",
-    "akiVersion":  "2.1.1"
+    "main": "./src/armordetails.js",
+    "akiVersion":  "2.3.1"
 }

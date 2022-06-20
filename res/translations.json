@@ -1,137 +1,64 @@
 {
     "en": {
-        "DAMAGE": "Damage",
-        "PENETRATION": "Armor penetration",
-        "ARMOR DAMAGE": "Damage to armor",
-        "FRAGMENTATION CHANCE": "Fragmentation chance",
-        "RICOCHET CHANCE": "Ricochet chance",
-        "ME_class": "Class",
-        "ME_noarmor": "Unarmored"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "cz": {
-        "DAMAGE": "Poškození",
-        "PENETRATION": "Průbojnost",
-        "ARMOR DAMAGE": "Poškození brnění",
-        "FRAGMENTATION CHANCE": "Šance na fragmentaci",
-        "RICOCHET CHANCE": "Šance na odraz",
-        "ME_class": "Třída",
-        "ME_noarmor": "Neobrněný"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "pl": {
-        "DAMAGE": "Szkoda",
-        "PENETRATION": "Penetracja pancerza",
-        "ARMOR DAMAGE": "Uszkodzenie zbroi",
-        "FRAGMENTATION CHANCE": "Szansa na fragmentację",
-        "RICOCHET CHANCE": "Szansa na rykoszet",
-        "ME_class": "Klasa",
-        "ME_noarmor": "Nieumiejętny"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "po": {
-        "DAMAGE": "Dano",
-        "PENETRATION": "Penetração de armadura",
-        "ARMOR DAMAGE": "Danos à armadura",
-        "FRAGMENTATION CHANCE": "Chance de fragmentação",
-        "RICOCHET CHANCE": "Chance de ricochete",
-        "ME_class": "Classe",
-        "ME_noarmor": "Sem armadura"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "ch": {
-        "DAMAGE": "损坏",
-        "PENETRATION": "护甲穿透",
-        "ARMOR DAMAGE": "对盔甲的伤害",
-        "FRAGMENTATION CHANCE": "碎片机会",
-        "RICOCHET CHANCE": "跳弹机会",
-        "ME_class": "类",
-        "ME_noarmor": "无所作为"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "ru": {
-        "DAMAGE": "Повреждать",
-        "PENETRATION": "Бронепробиваемость",
-        "ARMOR DAMAGE": "Повреждение брони",
-        "FRAGMENTATION CHANCE": "Вероятность фрагментации",
-        "RICOCHET CHANCE": "Шанс рикошета",
-        "ME_class": "Класс",
-        "ME_noarmor": "Без оружия"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "es": {
-        "DAMAGE": "Daño",
-        "PENETRATION": "Penetración de armadura",
-        "ARMOR DAMAGE": "Daño a la armadura",
-        "FRAGMENTATION CHANCE": "Posibilidad de fragmentación",
-        "RICOCHET CHANCE": "Oportunidad de rebote",
-        "ME_class": "Clase",
-        "ME_noarmor": "Sin armadura"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "es-mx": {
-        "DAMAGE": "Daño",
-        "PENETRATION": "Penetración de armadura",
-        "ARMOR DAMAGE": "Daño a la armadura",
-        "FRAGMENTATION CHANCE": "Posibilidad de fragmentación",
-        "RICOCHET CHANCE": "Oportunidad de rebote",
-        "ME_class": "Clase",
-        "ME_noarmor": "Sin armadura"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "ge": {
-        "DAMAGE": "Schaden",
-        "PENETRATION": "Rüstungsdurchdringung",
-        "ARMOR DAMAGE": "Beschädigung der Rüstung",
-        "FRAGMENTATION CHANCE": "Fragmentierung Chance",
-        "RICOCHET CHANCE": "Querschläger-Chance",
-        "ME_class": "Klasse",
-        "ME_noarmor": "Ungepanzert"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "sk": {
-        "DAMAGE": "Poškodenie",
-        "PENETRATION": "Prienik do brnenia",
-        "ARMOR DAMAGE": "Poškodenie brnenia",
-        "FRAGMENTATION CHANCE": "Šanca na fragmentáciu",
-        "RICOCHET CHANCE": "Šanca na odraz",
-        "ME_class": "Trieda",
-        "ME_noarmor": "Neozbrojený"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "tu": {
-        "DAMAGE": "Hasar",
-        "PENETRATION": "Zırh penetrasyon",
-        "ARMOR DAMAGE": "Zırhta hasar",
-        "FRAGMENTATION CHANCE": "Parçalanma şansı",
-        "RICOCHET CHANCE": "Sekme şansı",
-        "ME_class": "Sınıf",
-        "ME_noarmor": "zırhsız"
+        
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "it": {
-        "DAMAGE": "Danno",
-        "PENETRATION": "Penetrazione dell'armatura",
-        "ARMOR DAMAGE": "Danni all'armatura",
-        "FRAGMENTATION CHANCE": "Possibilità di frammentazione",
-        "RICOCHET CHANCE": "Possibilità di rimbalzo",
-        "ME_class": "Classe",
-        "ME_noarmor": "Disarmato"
+        
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "jp": {
-        "DAMAGE": "ダメージ",
-        "PENETRATION": "装甲貫通",
-        "ARMOR DAMAGE": "鎧の損傷",
-        "FRAGMENTATION CHANCE": "断片化の可能性",
-        "RICOCHET CHANCE": "跳ね返るチャンス",
-        "ME_class": "クラス",
-        "ME_noarmor": "無装甲"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "fr": {
-        "DAMAGE": "Dommage",
-        "PENETRATION": "Pénétration d'armure",
-        "ARMOR DAMAGE": "Dommages à l'armure",
-        "FRAGMENTATION CHANCE": "Chance de fragmentation",
-        "RICOCHET CHANCE": "Chance de ricochet",
-        "ME_class": "Classe",
-        "ME_noarmor": "Sans armure"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     },
     "hu": {
-        "DAMAGE": "Kár",
-        "PENETRATION": "Páncélátütő",
-        "ARMOR DAMAGE": "A páncél sérülése",
-        "FRAGMENTATION CHANCE": "Töredezettség esélye",
-        "RICOCHET CHANCE": "Ricochet esély",
-        "ME_class": "Osztály",
-        "ME_noarmor": "Fegyvertelen"
+        "DURABILITY FACTOR": "Durability Factor",
+        "EFFECTIVE DURABILITY": "Effective Durability"
     }
 }

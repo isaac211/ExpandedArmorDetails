@@ -13,15 +13,15 @@ using ItemAttributeCharacteristic = GClass2025;
 using Logger = Aki.Common.Log;
 using Comfort.Common;
 using System.Reflection;
-using MunitionsExpert;
-using static MunitionsExpert.Attributes;
+using ExpandedArmorDetails;
+using static ExpandedArmorDetails.Attributes;
 using ServerSettings = GClass1064;
-using MunitionsExpert.Patches;
 using System.IO;
+using ExpandedArmorDetails.Patches;
 
-namespace MunitionsExpert
+namespace ExpandedArmorDetails
 {
-    public class MunitionsExpert
+    public class ExpandedArmorDetails
     {
         private static ModInformation _modInfo;
         public static ModInformation ModInfo

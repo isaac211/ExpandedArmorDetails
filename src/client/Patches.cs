@@ -9,10 +9,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static MunitionsExpert.Attributes;
+using static ExpandedArmorDetails.Attributes;
 using ItemAttribute = GClass2023;
 
-namespace MunitionsExpert.Patches
+namespace ExpandedArmorDetails.Patches
 {
 	public class PatchManager
 	{
@@ -20,8 +20,8 @@ namespace MunitionsExpert.Patches
 		{
 			this._patches = new PatchList
 			{
-				new MunitionsExpert_CachedAttributesPatch(),
-                new MunitionsExpert_StaticIconsPatch()
+				new ExpandedArmorDetails_CachedAttributesPatch(),
+                new ExpandedArmorDetails_StaticIconsPatch()
 			};
 		}
 
@@ -33,9 +33,9 @@ namespace MunitionsExpert.Patches
 		private readonly PatchList _patches;
 	}
 
-    class MunitionsExpert_StaticIconsPatch : Patch
+    class ExpandedArmorDetails_StaticIconsPatch : Patch
     {
-        public MunitionsExpert_StaticIconsPatch() : base(typeof(MunitionsExpert_StaticIconsPatch), null, "PatchPrefix", null, null, null) { }
+        public ExpandedArmorDetails_StaticIconsPatch() : base(typeof(ExpandedArmorDetails_StaticIconsPatch), null, "PatchPrefix", null, null, null) { }
 
         protected override MethodBase GetTargetMethod()
         {
@@ -44,9 +44,9 @@ namespace MunitionsExpert.Patches
 
         private static bool PatchPrefix(ref Sprite __result, Enum id)
         {
-            if (id == null || !MunitionsExpert.iconCache.ContainsKey(id)) return true;
+            if (id == null || !ExpandedArmorDetails.iconCache.ContainsKey(id)) return true;
 
-            Sprite sprite = MunitionsExpert.iconCache[id];
+            Sprite sprite = ExpandedArmorDetails.iconCache[id];
 
             if (sprite != null)
             {
@@ -57,9 +57,9 @@ namespace MunitionsExpert.Patches
         }
     }
 
-    class MunitionsExpert_CachedAttributesPatch : Patch
+    class ExpandedArmorDetails_CachedAttributesPatch : Patch
     {
-        public MunitionsExpert_CachedAttributesPatch() : base(typeof(MunitionsExpert_CachedAttributesPatch), null, null, "PatchPostfix", null, null) { }
+        public ExpandedArmorDetails_CachedAttributesPatch() : base(typeof(ExpandedArmorDetails_CachedAttributesPatch), null, null, "PatchPostfix", null, null) { }
 
         protected override MethodBase GetTargetMethod()
         {
@@ -71,8 +71,8 @@ namespace MunitionsExpert.Patches
             bool converted = __result.Any(a => (ENewItemAttributeId)a.Id == ENewItemAttributeId.Damage); //Damage is pretty much guaranteed
             if (!converted) //If it has any of the custom attributes, it has all of them (the ones that apply ofc)
             {
-                MunitionsExpert.FormatExistingAttributes(ref __result, __instance);
-                MunitionsExpert.AddNewAttributes(ref __result, __instance);
+                ExpandedArmorDetails.FormatExistingAttributes(ref __result, __instance);
+                ExpandedArmorDetails.AddNewAttributes(ref __result, __instance);
             }
         }
     }

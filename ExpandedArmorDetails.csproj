@@ -7,8 +7,8 @@
     <ProjectGuid>{C5889536-4EE7-40BC-A8FD-7F1A80C3F3E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MunitionsExpert</RootNamespace>
-    <AssemblyName>MunitionsExpert</AssemblyName>
+    <RootNamespace>ExpandedArmorDetails</RootNamespace>
+    <AssemblyName>ExpandedArmorDetails</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -35,12 +35,12 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MunitionsExpert.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ExpandedArmorDetails.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src\client\Attributes.cs" />
     <Compile Include="src\client\ModInformation.cs" />
-    <Compile Include="src\client\MunitionsExpert.cs" />
+    <Compile Include="src\client\ExpandedArmorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\client\Patches.cs" />
   </ItemGroup>
@@ -51,16 +51,16 @@
     <Content Include="Image sources\icon_info_damage.png" />
     <Content Include="Image sources\icon_info_penetration.png" />
     <Content Include="Image sources\icon_info_shrapnelcount.png" />
-    <Content Include="src\server\ammostats.js" />
-    <Content Include="_Build\Faupi-MunitionsExpert\module.dll" />
+    <Content Include="src\server\armordetails.js" />
+    <Content Include="_Build\isaac211-ExpandedArmorDetails\module.dll" />
     <Content Include="res\armorDamage.png" />
     <Content Include="res\ricochet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Image sources\ammo stats.pdn" />
     <None Include="LICENSE" />
-    <None Include="MunitionsExpert.pfx" />
-    <None Include="_Build\Faupi-MunitionsExpert\LICENSE" />
+    <None Include="ExpandedArmorDetails.pfx" />
+    <None Include="_Build\isaac211-ExpandedArmorDetails\LICENSE" />
     <None Include="package.json" />
     <None Include="res\translations.json" />
   </ItemGroup>
@@ -119,7 +119,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set BuildDir=$(ProjectDir)_Build\Faupi-MunitionsExpert
+    <PostBuildEvent>set BuildDir=$(ProjectDir)_Build\isaac211-ExpandedArmorDetails
 
 powershell -Command "Remove-Item '%25BuildDir%25\*' -Recurse -Force"
 
