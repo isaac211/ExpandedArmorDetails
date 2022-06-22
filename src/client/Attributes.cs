@@ -19,7 +19,7 @@ namespace ExpandedArmorDetails
             switch (id)
             {
                 case ENewItemAttributeId.DurabilityFactor:
-                    return "DURABILITY FACTOR";
+                    return "MATERIAL ";
                 case ENewItemAttributeId.EffectiveDurability:
                     return "EFFECTIVE DURABILITY";
                 default:

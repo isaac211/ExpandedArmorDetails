@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ExpandedArmorDetails</RootNamespace>
     <AssemblyName>ExpandedArmorDetails</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -31,12 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>ExpandedArmorDetails.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
+<!--  <PropertyGroup>-->
+<!--    <SignAssembly>true</SignAssembly>-->
+<!--  </PropertyGroup>-->
+<!--  <PropertyGroup>-->
+<!--    <AssemblyOriginatorKeyFile>ExpandedArmorDetails.pfx</AssemblyOriginatorKeyFile>-->
+<!--  </PropertyGroup>-->
   <ItemGroup>
     <Compile Include="src\client\Attributes.cs" />
     <Compile Include="src\client\ModInformation.cs" />
@@ -59,7 +59,7 @@
   <ItemGroup>
     <None Include="Image sources\ammo stats.pdn" />
     <None Include="LICENSE" />
-    <None Include="ExpandedArmorDetails.pfx" />
+<!--    <None Include="ExpandedArmorDetails.pfx" />-->
     <None Include="_Build\isaac211-ExpandedArmorDetails\LICENSE" />
     <None Include="package.json" />
     <None Include="res\translations.json" />
@@ -67,11 +67,11 @@
   <ItemGroup>
     <Reference Include="Aki-Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Aki.Core.dll</HintPath>
+      <HintPath>..\References\BepinEx\Plugins\aki-core.dll</HintPath>
     </Reference>
     <Reference Include="Aki-Singleplayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Aki.Singleplayer.dll</HintPath>
+      <HintPath>..\References\BepinEx\Plugins\aki-singleplayer.dll</HintPath>
     </Reference>
     <Reference Include="Aki.Build">
       <HintPath>..\References\EFT-Managed\Aki.Build.dll</HintPath>
@@ -85,6 +85,9 @@
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\EFT-Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\References\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="Comfort, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

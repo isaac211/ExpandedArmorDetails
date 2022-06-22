@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Aki.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -17,31 +18,38 @@ namespace ExpandedArmorDetails.Patches
 	public class PatchManager
 	{
 		public PatchManager()
-		{
-			this._patches = new PatchList
+        {
+            this._patches = new List<ModulePatch>
 			{
 				new ExpandedArmorDetails_CachedAttributesPatch(),
                 new ExpandedArmorDetails_StaticIconsPatch()
 			};
 		}
-
+        
 		public void RunPatches()
 		{
-			this._patches.EnableAll();
+			foreach(ModulePatch patch in _patches)
+            {
+                patch.Enable();
+            }
 		}
 
-		private readonly PatchList _patches;
+		private readonly List<ModulePatch> _patches;
 	}
 
-    class ExpandedArmorDetails_StaticIconsPatch : Patch
+    class ExpandedArmorDetails_StaticIconsPatch : ModulePatch
     {
-        public ExpandedArmorDetails_StaticIconsPatch() : base(typeof(ExpandedArmorDetails_StaticIconsPatch), null, "PatchPrefix", null, null, null) { }
-
+        // public ExpandedArmorDetails_StaticIconsPatch() : base(typeof(ExpandedArmorDetails_StaticIconsPatch), null, "PatchPrefix", null, null, null) { }
         protected override MethodBase GetTargetMethod()
         {
             return typeof(StaticIcons).GetMethod("GetAttributeIcon", BindingFlags.Instance | BindingFlags.Public);
         }
 
+        protected override PatchPrefix()
+        {
+            
+        }
+        
         private static bool PatchPrefix(ref Sprite __result, Enum id)
         {
             if (id == null || !ExpandedArmorDetails.iconCache.ContainsKey(id)) return true;
@@ -57,16 +65,16 @@ namespace ExpandedArmorDetails.Patches
         }
     }
 
-    class ExpandedArmorDetails_CachedAttributesPatch : Patch
+    class ExpandedArmorDetails_CachedAttributesPatch : ModulePatch
     {
         public ExpandedArmorDetails_CachedAttributesPatch() : base(typeof(ExpandedArmorDetails_CachedAttributesPatch), null, null, "PatchPostfix", null, null) { }
 
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(ArmorTemplate).GetMethod("GetCachedReadonlyQualities", BindingFlags.Instance | BindingFlags.Public);
+            return typeof(ItemTemplate).GetMethod("GetCachedReadonlyQualities", BindingFlags.Instance | BindingFlags.Public);
         }
 
-        private static void PatchPostfix(ref ArmorTemplate __instance, ref List<ItemAttribute> __result)
+        private static void PatchPostfix(ref ItemTemplate __instance, ref List<ItemAttribute> __result)
         {
             // TODO verify if we can only retrieve the material type, then fetch that instead and create a table that matches
             // known info on wikis for durability factor if it is the cause

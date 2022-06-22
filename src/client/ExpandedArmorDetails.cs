@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 using ItemAttribute = GClass2023;
 using ItemAttributeCharacteristic = GClass2025;
-using Logger = Aki.Common.Log;
 using Comfort.Common;
 using System.Reflection;
 using ExpandedArmorDetails;
@@ -18,6 +17,7 @@ using static ExpandedArmorDetails.Attributes;
 using ServerSettings = GClass1064;
 using System.IO;
 using ExpandedArmorDetails.Patches;
+using Logger = BepInEx.Logging.Logger;
 
 namespace ExpandedArmorDetails
 {
@@ -65,23 +65,23 @@ namespace ExpandedArmorDetails
 
                 if (uwr.responseCode != 200)
                 {
-                    Logger.Error($"[{modName}] Request error {uwr.responseCode}: {uwr.error}");
+                    Logger.LogError($"[{modName}] Request error {uwr.responseCode}: {uwr.error}");
                 }
                 else
                 {
                     // Get downloaded asset bundle
-                    Logger.Info($"[{modName}] Retrieved texture! {id.ToString()} from {path}");
+                    Logger.LogInfo($"[{modName}] Retrieved texture! {id.ToString()} from {path}");
                     Texture2D cachedTexture = DownloadHandlerTexture.GetContent(uwr);
                     iconCache.Add(id, Sprite.Create(cachedTexture, new Rect(0, 0, cachedTexture.width, cachedTexture.height), new Vector2(0, 0)));
                 }
             }
         }
-        static public void AddNewAttributes(ref List<ItemAttribute> attributes, ArmorTemplate template)
+        static public void AddNewAttributes(ref List<ItemAttribute> attributes, ItemTemplate template)
         {
 
-            if (template.DurabilityFactor > 0)
+            if (template.Weight > 0)
             {
-                ItemAttribute at_durabilityfact = new ItemAttribute(ENewItemAttributeId.DurabilityFactor)
+                ItemAttribute at_durabilityfact = new ItemAttribute(ENewItemAttributeId.DurabilityFactor.ToString(), template)
                 {
                     Name = ENewItemAttributeId.DurabilityFactor.GetName(),
                     Base = () => template.DurabilityFactor,
@@ -90,7 +90,7 @@ namespace ExpandedArmorDetails
                 };
 
 
-                ItemAttribute at_durabilityeff = new ItemAttribute(ENewItemAttributeId.EffectiveDurability)
+                ItemAttribute at_durabilityeff = new ItemAttribute(ENewItemAttributeId.EffectiveDurability.ToString(), template)
                 {
                     Name = ENewItemAttributeId.EffectiveDurability.GetName(),
                     Base = () => template.DurabilityFactor,

@@ -22,7 +22,7 @@ namespace ExpandedArmorDetails
         {
             ModInformation ModInfo;
 
-            JObject response = JObject.Parse(Aki.SinglePlayer.Utils.RequestHandler.GetJson($"/ExpandedArmorDetails/GetInfo"));
+            JObject response = JObject.Parse(Aki.Common.Http.RequestHandler.GetJson($"/ExpandedArmorDetails/GetInfo"));
             try
             {
                 Assert.IsTrue(response.Value<int>("status") == 0);
